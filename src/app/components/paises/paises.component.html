@@ -1,0 +1,40 @@
+<h2>Gestión de Países</h2>
+
+<form (ngSubmit)="guardar()" style="margin-bottom: 1rem;">
+  <input
+    [(ngModel)]="pais.nombre"
+    name="nombre"
+    placeholder="Nombre del país"
+    required
+  />
+  <input
+    [(ngModel)]="pais.codigo"
+    name="codigo"
+    placeholder="Código"
+    required
+  />
+  <button type="submit">{{ editando ? 'Actualizar' : 'Agregar' }}</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>
+
+<table border="1" cellpadding="4" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Código</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of paises">
+      <td>{{ p.id }}</td>
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.codigo }}</td>
+      <td>
+        <button (click)="editar(p)">✏️ Editar</button>
+        <button (click)="eliminar(p.id)">🗑 Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

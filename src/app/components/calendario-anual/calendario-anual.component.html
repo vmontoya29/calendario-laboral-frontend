@@ -1,0 +1,39 @@
+<h2>Calendario anual clasificado</h2>
+
+<div style="display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin-bottom:1rem;">
+  <select [(ngModel)]="paisId" name="paisId">
+    <option [ngValue]="0">País</option>
+    <option *ngFor="let p of paises" [value]="p.id">{{ p.nombre }}</option>
+  </select>
+
+  <input
+    type="number"
+    [(ngModel)]="anio"
+    name="anio"
+    min="1900"
+    max="2100"
+    style="width:6rem"
+  />
+
+  <button (click)="generar()">Generar</button>
+</div>
+
+<table *ngIf="calendario.length" border="1" cellpadding="4" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Tipo de día</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let d of calendario">
+      <td>{{ d.fecha }}</td>
+      <td>{{ d.tipoDia }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!calendario.length">
+  <i>No hay calendario cargado aún.</i>
+</div>

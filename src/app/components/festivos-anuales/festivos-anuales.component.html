@@ -1,0 +1,41 @@
+<h2>Festivos del año</h2>
+
+<div style="display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin-bottom:1rem;">
+  <select [(ngModel)]="paisId" name="paisId">
+    <option [ngValue]="0">País</option>
+    <option *ngFor="let p of paises" [value]="p.id">{{ p.nombre }}</option>
+  </select>
+
+  <input
+    type="number"
+    [(ngModel)]="anio"
+    name="anio"
+    min="1900"
+    max="2100"
+    style="width:6rem"
+  />
+
+  <button (click)="consultar()">Consultar</button>
+</div>
+
+<table *ngIf="festivos.length" border="1" cellpadding="4" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Nombre</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let f of festivos">
+      <td>{{ f.fecha }}</td>
+      <td>{{ f.nombre }}</td>
+      <td>{{ f.tipo }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!festivos.length">
+  <i>No hay festivos cargados aún.</i>
+</div>

@@ -1,0 +1,82 @@
+<h2>Gestión de Festivos</h2>
+
+<!-- Formulario para agregar o editar festivos -->
+<form (ngSubmit)="guardar()" style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+  <input
+    [(ngModel)]="festivo.nombre"
+    name="nombre"
+    placeholder="Nombre del festivo"
+    required
+  />
+
+  <input
+    type="number"
+    [(ngModel)]="festivo.dia"
+    name="dia"
+    min="1"
+    max="31"
+    placeholder="Día"
+    required
+    style="width: 4rem;"
+  />
+
+  <input
+    type="number"
+    [(ngModel)]="festivo.mes"
+    name="mes"
+    min="1"
+    max="12"
+    placeholder="Mes"
+    required
+    style="width: 4rem;"
+  />
+
+  <select [(ngModel)]="festivo.pais.id" name="paisId" required>
+    <option [ngValue]="0">Selecciona país</option>
+    <option *ngFor="let p of paises" [value]="p.id">{{ p.nombre }}</option>
+  </select>
+
+  <select [(ngModel)]="festivo.tipoFestivo.id" name="tipoFestivoId" required>
+    <option [ngValue]="0">Selecciona tipo</option>
+    <option *ngFor="let t of tipos" [value]="t.id">{{ t.tipo }}</option>
+  </select>
+
+  <button type="submit">{{ editando ? 'Actualizar' : 'Agregar' }}</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>
+
+<hr />
+
+<!-- Tabla de festivos existentes -->
+<table border="1" cellpadding="4" cellspacing="0" style="width:100%; text-align:center;">
+  <thead style="background:#f0f0f0;">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Día</th>
+      <th>Mes</th>
+      <th>País</th>
+      <th>Tipo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let f of festivos">
+      <td>{{ f.id }}</td>
+      <td>{{ f.nombre }}</td>
+      <td>{{ f.dia }}</td>
+      <td>{{ f.mes }}</td>
+      <td>{{ f.pais.nombre || '—' }}</td>
+      <td>{{ f.tipoFestivo.tipo || '—' }}</td>
+      <td>
+        <button (click)="editar(f)">✏️ Editar</button>
+        <button (click)="eliminar(f.id)">🗑 Eliminar</button>
+      </td>
+    </tr>
+
+    <tr *ngIf="festivos.length === 0">
+      <td colspan="7">No hay festivos registrados</td>
+    </tr>
+  </tbody>
+</table>

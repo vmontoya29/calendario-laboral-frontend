@@ -1,0 +1,53 @@
+<h2>Tipos de Festivo</h2>
+
+<form (ngSubmit)="guardar()" style="margin-bottom: 1rem;">
+  <input
+    [(ngModel)]="tipo.nombre"
+    name="nombre"
+    placeholder="Nombre del tipo"
+    required
+  />
+
+  <input
+    [(ngModel)]="tipo.descripcion"
+    name="descripcion"
+    placeholder="Descripción"
+    required
+  />
+
+  <!-- Agregar un campo para el tipo -->
+  <input
+    [(ngModel)]="tipo.tipo"
+    name="tipo"
+    placeholder="Tipo del festivo"
+    required
+  />
+
+  <button type="submit">{{ editando ? 'Actualizar' : 'Agregar' }}</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>
+
+<table border="1" cellpadding="4" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Tipo</th> <!-- Mostrar el tipo -->
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let t of tipos">
+      <td>{{ t.id }}</td>
+      <td>{{ t.nombre }}</td>
+      <td>{{ t.descripcion }}</td>
+      <td>{{ t.tipo }}</td> <!-- Mostrar el tipo -->
+      <td>
+        <button (click)="editar(t)">✏️ Editar</button>
+        <button (click)="eliminar(t.id)">🗑 Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

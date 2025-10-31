@@ -1,0 +1,14 @@
+<h1>{{ title }}</h1>
+
+
+<nav style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+  <button routerLink="/paises" class="button-link">Países</button>  <!-- Navega a la ruta '/paises' -->
+  <button routerLink="/tipos-festivos" class="button-link">Tipos de Festivo</button>  <!-- Navega a la ruta '/tipos-festivos' -->
+  <button routerLink="/festivos" class="button-link">Festivos Base</button>  <!-- Navega a la ruta '/festivos' -->
+  <button routerLink="/consulta-fecha" class="button-link">¿Es festivo?</button>  <!-- Navega a la ruta '/consulta-fecha' -->
+  <button routerLink="/festivos-anuales" class="button-link">Festivos del Año</button>  <!-- Navega a la ruta '/festivos-anuales' -->
+  <button routerLink="/calendario-anual" class="button-link">Calendario Anual</button>  <!-- Navega a la ruta '/calendario-anual' -->
+</nav>
+
+
+<router-outlet></router-outlet>

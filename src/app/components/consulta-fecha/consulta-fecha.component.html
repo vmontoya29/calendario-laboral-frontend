@@ -1,0 +1,17 @@
+<h2>¿Es festivo esta fecha?</h2>
+
+<div style="display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin-bottom:1rem;">
+  <select [(ngModel)]="paisId" name="paisId">
+    <option [ngValue]="0">País</option>
+    <option *ngFor="let p of paises" [value]="p.id">{{ p.nombre }}</option>
+  </select>
+
+  <input type="date" [(ngModel)]="fecha" name="fecha" />
+
+  <button (click)="consultar()">Consultar</button>
+</div>
+
+<div *ngIf="resultado">
+  <h3>Resultado</h3>
+  <pre>{{ resultado }}</pre>
+</div>
