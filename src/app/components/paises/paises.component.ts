@@ -13,7 +13,7 @@ import { Pais } from '../../models/pais.model';
 })
 export class PaisesComponent implements OnInit {
   paises: Pais[] = [];
-  pais: Pais = { id: 0, nombre: '', codigo: '' };
+  pais: Pais = { id: 0, nombre: '' };
   editando = false;
 
   constructor(private paisService: PaisService) {}
@@ -36,7 +36,7 @@ export class PaisesComponent implements OnInit {
         this.cargarPaises();
       });
     } else {
-      const nuevo = { nombre: this.pais.nombre, codigo: this.pais.codigo };
+      const nuevo = { nombre: this.pais.nombre,id: this.pais.id };
       this.paisService.create(nuevo).subscribe(() => {
         this.cancelar();
         this.cargarPaises();
@@ -56,7 +56,7 @@ export class PaisesComponent implements OnInit {
   }
 
   cancelar(): void {
-    this.pais = { id: 0, nombre: '', codigo: '' };
+    this.pais = { id: 0, nombre: '' };
     this.editando = false;
   }
 }

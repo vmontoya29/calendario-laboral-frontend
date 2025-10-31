@@ -8,9 +8,9 @@
     required
   />
   <input
-    [(ngModel)]="pais.codigo"
-    name="codigo"
-    placeholder="Código"
+    [(ngModel)]="pais.id"
+    name="id"
+    placeholder="id"
     required
   />
   <button type="submit">{{ editando ? 'Actualizar' : 'Agregar' }}</button>
@@ -21,8 +21,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Nombre</th>
-      <th>Código</th>
+      <th>Nombre</th>      
       <th>Acciones</th>
     </tr>
   </thead>
@@ -30,7 +29,7 @@
     <tr *ngFor="let p of paises">
       <td>{{ p.id }}</td>
       <td>{{ p.nombre }}</td>
-      <td>{{ p.codigo }}</td>
+      
       <td>
         <button (click)="editar(p)">✏️ Editar</button>
         <button (click)="eliminar(p.id)">🗑 Eliminar</button>

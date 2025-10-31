@@ -1,20 +1,7 @@
 <h2>Tipos de Festivo</h2>
 
 <form (ngSubmit)="guardar()" style="margin-bottom: 1rem;">
-  <input
-    [(ngModel)]="tipo.nombre"
-    name="nombre"
-    placeholder="Nombre del tipo"
-    required
-  />
-
-  <input
-    [(ngModel)]="tipo.descripcion"
-    name="descripcion"
-    placeholder="Descripción"
-    required
-  />
-
+ 
   <!-- Agregar un campo para el tipo -->
   <input
     [(ngModel)]="tipo.tipo"
@@ -30,9 +17,7 @@
 <table border="1" cellpadding="4" cellspacing="0">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
+      <th>ID</th>     
       <th>Tipo</th> <!-- Mostrar el tipo -->
       <th>Acciones</th>
     </tr>
@@ -40,9 +25,8 @@
 
   <tbody>
     <tr *ngFor="let t of tipos">
-      <td>{{ t.id }}</td>
-      <td>{{ t.nombre }}</td>
-      <td>{{ t.descripcion }}</td>
+      <td>{{ t.id }}</td>   
+     
       <td>{{ t.tipo }}</td> <!-- Mostrar el tipo -->
       <td>
         <button (click)="editar(t)">✏️ Editar</button>
